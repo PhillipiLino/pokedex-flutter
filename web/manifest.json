@@ -1,6 +1,6 @@
 {
-    "name": "dario_project",
-    "short_name": "dario_project",
+    "name": "pokedex",
+    "short_name": "pokedex",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

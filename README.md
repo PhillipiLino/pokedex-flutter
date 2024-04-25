@@ -1,4 +1,4 @@
-# dario_project
+# pokedex
 
 A new Flutter project.
 

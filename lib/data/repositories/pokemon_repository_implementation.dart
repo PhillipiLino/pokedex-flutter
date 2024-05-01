@@ -1,38 +1,18 @@
-import 'package:pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex/core/client_interface.dart';
 import 'package:pokedex/domain/repositories/pokemon_repository_interface.dart';
 
 class PokemonRepositoryImplementation implements IPokemonRepository {
+  final IClient client;
+
+  PokemonRepositoryImplementation(this.client);
+
   @override
-  Future<List<PokemonEntity>> getPokemons() async {
-    return [
-      const PokemonEntity(
-        id: '001',
-        name: 'Bulbasaur',
-        imageUrl:
-            'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png',
-        type: 'type',
-      ),
-      const PokemonEntity(
-        id: '002',
-        name: 'Ivysaur',
-        imageUrl:
-            'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png',
-        type: 'type',
-      ),
-      const PokemonEntity(
-        id: '003',
-        name: 'Venusaur',
-        imageUrl:
-            'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png',
-        type: 'type',
-      ),
-      const PokemonEntity(
-        id: '004',
-        name: 'Charmander',
-        imageUrl:
-            'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png',
-        type: 'type',
-      ),
-    ];
+  Future<List<Map<String, dynamic>>> getPokemons() async {
+    final Map<String, dynamic> response = await client.get(
+      'https://pokeapi.co/api/v2/pokemon',
+    );
+
+    final list = response["results"] as List?;
+    return list?.cast<Map<String, dynamic>>() ?? [];
   }
 }

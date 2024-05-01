@@ -1,5 +1,3 @@
-import 'package:pokedex/domain/entities/pokemon_entity.dart';
-
 abstract class IPokemonRepository {
-  Future<List<PokemonEntity>> getPokemons();
+  Future<List<Map<String, dynamic>>> getPokemons();
 }

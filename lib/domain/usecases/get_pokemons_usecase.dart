@@ -6,7 +6,8 @@ class GetPokemonsUsecase {
 
   GetPokemonsUsecase(this.repository);
 
-  Future<List<PokemonEntity>> call() {
-    return repository.getPokemons();
+  Future<List<PokemonEntity>> call() async {
+    final list = await repository.getPokemons();
+    return list.map((e) => PokemonEntity.fromJson(e)).toList();
   }
 }

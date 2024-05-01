@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/injections.dart';
 import 'package:pokedex/presenter/stores/pokemon_list_page_store.dart';
 
 import '../../domain/entities/pokemon_entity.dart';
@@ -13,7 +14,7 @@ class PokemonListPage extends StatefulWidget {
 }
 
 class _PokemonListPageState extends State<PokemonListPage> {
-  final store = PokemonListPageStore();
+  final store = getIt<PokemonListPageStore>();
   List<PokemonEntity> list = [];
 
   @override
